@@ -7,5 +7,9 @@ file(GLOB UTIL_SOURCES "src/*.c")
 
 foreach(util_src ${UTIL_SOURCES})
     get_filename_component(util_name ${util_src} NAME_WE)
-    add_executable(${util_name} ${util_src})
+    add_executable(${util_name} ${util_src}
+            lib/format.c
+            lib/format.h
+            lib/file.c
+            lib/file.h)
 endforeach()
