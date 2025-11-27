@@ -23,7 +23,7 @@ char* humanReadable(uint64_t bytes) {
 }
 
 int indexLoc(char unit) {
-    const char *units[] = {"B", "K", "M", "G", "T", "P", "E"};
+    const char *units[] = {"B", "K", "M", "G", "T", "P", "E", "Z"};
     int size = sizeof(units) / sizeof(units[0]);
 
     for (int i = 0; i < size; i++) {
@@ -31,13 +31,25 @@ int indexLoc(char unit) {
             return i;
         }
     }
+    return -1;
+
 }
 
 char* convert(uint64_t bytes, char unit) {
-    const char *units[] = {"B", "K", "M", "G", "T", "P", "E"};
-    int size = sizeof(units) / sizeof(units[0]);
+    const char *units[] = {"B", "K", "M", "G", "T", "P", "E", "Z"};
     int i = 0;
     double eax = (double)bytes;
     int index = indexLoc(unit);
+    if (index < 0) {
+        return nullptr;
+    }
 
+
+    while (eax >= 1024.0 && i < index) {
+        eax /= 1024.0;
+        i++;
+    }
+    static char hr[32];
+    sprintf(hr, "%.2f %s", eax, units[index]);
+    return hr;
 }

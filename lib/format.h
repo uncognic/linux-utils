@@ -8,6 +8,6 @@
 #include <stdint.h>
 
 char* humanReadable(uint64_t bytes);
-char* convert(uint64_t, char unit);
+char* convert(uint64_t bytes, char unit);
 int indexLoc(char unit);
 #endif //LINUX_UTILS_FORMAT_H
