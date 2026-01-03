@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
         while (*p && !isdigit(*p)) p++;
 
         if (*p) {
-            uint64_t kb = strtoull(p, nullptr, 10);
+            uint64_t kb = strtoull(p, NULL, 10);
             uint64_t bytes = kb * 1024;
 
             if (flag) {

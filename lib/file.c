@@ -12,7 +12,7 @@ FILE* openFile(const char *fname, const char *mode) {
     FILE *file = fopen(fname, mode);
     if (!file) {
         perror("No such file");
-        return nullptr;
+        return NULL;
     }
     return file;
 }

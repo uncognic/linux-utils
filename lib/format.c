@@ -41,7 +41,7 @@ char* convert(uint64_t bytes, char unit) {
     double eax = (double)bytes;
     int index = indexLoc(unit);
     if (index < 0) {
-        return nullptr;
+        return NULL;
     }
 
 
