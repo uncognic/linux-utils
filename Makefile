@@ -1,4 +1,4 @@
-CC = cc
+CC = gcc
 CFLAGS = -std=c17 -Wall -Wextra -O2 -Ilib
 
 SRC_DIR = src

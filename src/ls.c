@@ -20,15 +20,14 @@ int main(int argc, char *argv[]) {
     if (d) {
         while ((dir = readdir(d)) != NULL) {
             if (flag == 1) {
-                printf("%s\n", dir->d_name);
-            } else {
-                if (dir->d_name[0] != '.') {
-                    printf("%s\n", dir->d_name);
-                }
+                printf("%s ", dir->d_name);
+            } else if (dir->d_name[0] != '.') {
+                printf("%s ", dir->d_name);
+                
             }
         }
 
-
+        printf("\n");
         closedir(d);
     }
     return(0);
