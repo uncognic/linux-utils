@@ -32,10 +32,10 @@ int main (int argc, char *argv[]) {
         if (statvfs(ent->mnt_dir, &st) != 0) {
             continue;
         }
-        unsigned long long size = (unsigned long long)st.f_blocks * st.f_frsize;
-        unsigned long long free = (unsigned long long)st.f_bfree * st.f_frsize;
-        unsigned long long avail = (unsigned long long)st.f_bavail * st.f_frsize;
-        unsigned long long used = size - free;
+        uint64_t size = (uint64_t)st.f_blocks * st.f_frsize;
+        uint64_t free = (uint64_t)st.f_bfree * st.f_frsize;
+        uint64_t avail = (uint64_t)st.f_bavail * st.f_frsize;
+        uint64_t used = size - free;
         int pct = (size == 0) ? 0 : (int)((used * 100ULL) / size);
         
         if (human) {
@@ -44,10 +44,10 @@ int main (int argc, char *argv[]) {
             char *avail_h = humanReadable(avail);
             printf("%-20s %10s %10s %10s %5d%%  %s\n", ent->mnt_fsname, size_h, used_h, avail_h, pct, ent->mnt_dir);
         } else {
-            unsigned long long size_k = size / 1024;
-            unsigned long long used_k = used / 1024;
-            unsigned long long avail_k = avail / 1024;
-            printf("%-20s %10llu %10llu %10llu %5d%%  %s\n", ent->mnt_fsname, size_k, used_k, avail_k, pct, ent->mnt_dir);
+            uint64_t size_k = size / 1024;
+            uint64_t used_k = used / 1024;
+            uint64_t avail_k = avail / 1024;
+            printf("%-20s %10lu %10lu %10lu %5d%%  %s\n", ent->mnt_fsname, size_k, used_k, avail_k, pct, ent->mnt_dir);
         }
     }
     endmntent(mt);
